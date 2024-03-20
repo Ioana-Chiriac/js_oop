@@ -4,10 +4,22 @@ class Product {
         this.price = price;
         this.stockQuantity = stockQuantity;
     }
+    addToStock(quantity) {
+        this.stockQuantity += quantity;
+        this.logStockToConsole();
+    }
+    removeFromStock(quantity) {
+        this.stockQuantity -= quantity;
+        this.logStockToConsole();
+    }
+   logStockToConsole(){
+    console.log(`Current Stock For ${this.productName} is now ${this.stockQuantity}.`);
+   }
+
 }
 
-const product1 = new Product(`Bicicleta`, 750, 1000);
-console.log(product1);
+const bike = new Product(`Bicicleta`, 750, 1000);
+console.log(bike);
 
 const product2 = {
     productName: `Bicicleta`,
@@ -17,6 +29,15 @@ const product2 = {
 
 console.log(product2);
 
-const product3 = new Product(`Leptop`, 2500, 300);
-console.log(product3);
+const leptop = new Product(`Leptop`, 2500, 300);
+console.log(leptop);
 
+bike.addToStock(100);
+console.log(bike);
+
+leptop.removeFromStock(200);
+console.log(leptop);
+
+leptop.addToStock(300);
+leptop.removeFromStock(300);
+leptop.addToStock(200);
