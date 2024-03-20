@@ -18,6 +18,22 @@ class Product {
 
 }
 
+class DiscountProduct extends Product {
+    constructor(productName, price, stockQuantity, discount) {
+        super (productName, price, stockQuantity);
+             this.discount = discount;
+       
+    }
+    getDiscountPrice() {
+        let price = this.price - this.price * (this.discount / 100 );
+        return price;
+    }
+    logDiscountedPrice() {
+        let discountedPrice = this.getDiscountPrice();
+        console.log(`price with discounted is ${discountedPrice} for ${this.productName}`);
+    }
+}
+
 const bike = new Product(`Bicicleta`, 750, 1000);
 console.log(bike);
 
@@ -41,3 +57,23 @@ console.log(leptop);
 leptop.addToStock(300);
 leptop.removeFromStock(300);
 leptop.addToStock(200);
+
+
+const smartphone = new DiscountProduct(`Smart Phone`, 3000, 200, 20);
+console.log(smartphone);
+smartphone.removeFromStock(23);
+
+smartphone.price = 2000
+smartphone.discount = 20;
+smartphone.logDiscountedPrice();
+
+
+
+
+
+
+
+
+
+
+
